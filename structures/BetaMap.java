@@ -4,10 +4,20 @@ public class BetaMap <K, V>{
     BetaList<BetaList<Pair<K, V>>> map = new BetaList<>();
     BetaList<K> keys = new BetaList<>();
 
+
+    /**
+     * @param key
+     * @return a hash for a key
+     */
     public int hashKey(K key){
         return 0;
     }
 
+    /**
+     * @param key
+     * @param value
+     * put a key-value pair in the map
+     */
     public void put(K key, V value){
         int index = hashKey(key) % (map.size() + 1);
         Pair<K, V> kvPair = new Pair<>(key, value);
@@ -27,6 +37,12 @@ public class BetaMap <K, V>{
         keys.append(kvPair.key);
     }
 
+    /**
+     * @param chain
+     * @param key
+     * @param value
+     * updates the value of a key
+     */
     private void updateValue(BetaList<Pair<K, V>>chain, K key, V value){
         for (int i = 0; i < chain.size(); i++) {
             Pair<K, V> kvPair = chain.get(i);
@@ -37,6 +53,11 @@ public class BetaMap <K, V>{
         }
     }
 
+    /**
+     * @param key
+     * @return value of key
+     * @throws Exception
+     */
     public V get(K key) throws Exception{
         int index = hashKey(key);
         BetaList<Pair<K, V>> kvChain = map.get(index);
@@ -50,6 +71,9 @@ public class BetaMap <K, V>{
         throw new Exception("Key not found");
     }
 
+    /**
+     * @return size of the map
+     */
     public int size(){
         int sz = 0;
 
@@ -61,6 +85,10 @@ public class BetaMap <K, V>{
         return sz;
     }
 
+    /**
+     * @param key
+     * remove key of a map
+     */
     public void remove(K key){
         int index = hashKey(key);
         BetaList<Pair<K, V>> kvChain = map.get(index);

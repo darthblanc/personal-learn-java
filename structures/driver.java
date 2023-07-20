@@ -1,7 +1,7 @@
 package structures;
 
 public class driver {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         BetaList<Integer> list = new BetaList<>();
         list.append(1);
         list.append(2);
@@ -17,6 +17,7 @@ public class driver {
         BetaMap<Integer, Integer> map = new BetaMap<>();
         map.put(1, 5);
         map.put(2, 3);
+        System.out.println(map.get(2));
         map.put(1, 3);
         map.remove(2);
         System.out.println(map);

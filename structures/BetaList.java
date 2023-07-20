@@ -4,14 +4,23 @@ public class BetaList <T> {
     T[] list = (T[]) new Object[10];
     int pointer = 0;
 
+    /**
+     * @param item
+     * adds an item to the end of the list
+     */
     public void append(T item){
         if (pointer == list.length / 2){
-            list = expand();
+            expand();
         }
         list[pointer] = item;
         pointer += 1;
     }
 
+    /**
+     * @param item
+     * @param index
+     * add an item into a certain index
+     */
     public void add(T item, int index){
         if (index > pointer){
             throw new IndexOutOfBoundsException();
@@ -32,16 +41,24 @@ public class BetaList <T> {
         list = newList;
     }
 
-    private T[] expand(){
+    /**
+     * expand the list
+     */
+    private void expand(){
         T[] newList = (T[]) new Object[list.length * 2];
 
         for (int i = 0; i < list.length; i++) {
             newList[i] = list[i];
         }
 
-        return newList;
+        list = newList;
     }
 
+    /**
+     * @param item
+     * @return boolean
+     * check if the list contains a certain item
+     */
     public boolean contains(T item){
         for (int i = 0; i < list.length; i++) {
             if (list[0] == item)
@@ -49,22 +66,41 @@ public class BetaList <T> {
         }
         return false;
     }
+
+    /**
+     * @return first item in list
+     */
     public T getFirst(){
         return list[0];
     }
 
+    /**
+     * @param index
+     * @return item at certain index
+     */
     public T get(int index){
         return list[index];
     }
 
+    /**
+     * @return last item in list
+     */
     public T getLast(){
         return list[pointer - 1];
     }
 
+    /**
+     * @return size of the list
+     */
     public int size(){
         return pointer;
     }
 
+
+    /**
+     * @param index
+     * remove item at a certain index
+     */
     public void remove(int index){
         if (index > pointer)
             throw new IndexOutOfBoundsException();
@@ -82,15 +118,26 @@ public class BetaList <T> {
         pointer -= 1;
     }
 
+    /**
+     * empty the list
+     */
     public void clear(){
         list = (T[]) new Object[10];
         pointer = 0;
     }
 
+    /**
+     * @return boolean
+     * check if list is empty
+     */
     public boolean isEmpty(){
         return pointer == 0;
     }
 
+    /**
+     * @param item
+     * @return last index of an item
+     */
     public int lastIndexOf(T item){
         for (int i = pointer; i > 0; i--) {
             if (item == list[i])
