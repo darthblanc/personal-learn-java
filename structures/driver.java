@@ -1,3 +1,5 @@
+package structures;
+
 public class driver {
     public static void main(String[] args) {
         BetaList<Integer> list = new BetaList<>();

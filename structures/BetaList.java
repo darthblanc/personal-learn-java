@@ -1,3 +1,5 @@
+package structures;
+
 public class BetaList <T> {
     T[] list = (T[]) new Object[10];
     int pointer = 0;

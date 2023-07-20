@@ -1,4 +1,4 @@
-import java.security.Key;
+package structures;
 
 public class BetaMap <K, V>{
     BetaList<BetaList<Pair<K, V>>> map = new BetaList<>();
